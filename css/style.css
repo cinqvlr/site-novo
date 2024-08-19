@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Montserrat", sans-serif;
+    background: linear-gradient(135deg, #e0e0e0, #ffffff); /* gradiente suave do cinza claro para o branco */
 }
 
 .site {
@@ -21,12 +22,40 @@ header.top {
 
 .logo img {
     width: 150px;
-    height: 150px;
+    height: auto;
 }
 
 nav.menu {
+    background-color: rgb(66, 13, 99); /* cor de fundo do menu */
+    padding: 15px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* sombra */
+}
+
+nav.menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
     text-align: center;
-    margin: 20px 0;
+}
+
+nav.menu ul li {
+    display: inline;
+    margin: 0 20px;
+}
+
+nav.menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 15px;
+    display: inline-block;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* transições suaves */
+}
+
+nav.menu ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* efeito de hover */
+    color: #fff;
 }
 
 .banner {
@@ -34,6 +63,7 @@ nav.menu {
     height: 500px;
     background-color: rgb(213, 228, 222);
     overflow: hidden;
+    margin-top: 20px;
 }
 
 .banner img {
@@ -56,15 +86,55 @@ nav.menu {
     text-align: center;
     padding: 20px;
     box-sizing: border-box;
-    border: 2px solid #fff; /* borda branca de 2px */
-    border-radius: 10px; /* bordas arredondadas */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* sombrinha */
+    border: 2px solid #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* peguei no github rsrs (animação basica no box) **/
+
+.box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.box:hover::before {
+    opacity: 0;
+}
+
+.box:hover {
+    animation: elevate 0.6s ease forwards;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .box img {
     width: 100%;
     height: auto;
-    border-radius: 5px; /* arredondo dos boxs */
+    border-radius: 5px;
+    z-index: 1;
+    position: relative;
+}
+
+@keyframes elevate {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(-5px);
+    }
 }
 
 .no-margin {
@@ -114,7 +184,7 @@ footer.footer {
 .footer-d1 ul li a {
     color: #fff;
     text-decoration: none;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
 }
 
 .footer-d1 ul li a:hover {
